@@ -31,7 +31,7 @@ nav h1{
     -webkit-text-fill-color: transparent;
 }
 
-#list{
+#container{
     display: flex;
     width: 80%;
     padding: 10px;
@@ -122,6 +122,9 @@ nav h1{
     bottom: 0;
     z-index: 1001;
 }
+#add-todo p{
+    color: #c72200;
+}
 .cta-btn{
     font-family: sans-serif;
     padding: 10px;
@@ -129,4 +132,39 @@ nav h1{
     background: linear-gradient(to bottom,  #efc5ca 0%,#d24b5a 50%,#ba2737 51%,#f18e99 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     text-decoration: none;
     border-radius: 8px;
+}
+.form-group{
+    display:flex;
+    flex-direction: column;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 15px;
+}
+.form-group p{
+    font-family: sans-serif;
+    font-size: 16px;
+}
+.form-input{
+    border-radius: 8px;
+    height: 35px;
+    border:1px solid rgb(177, 177, 177);
+}
+.form{
+    width:60%;
+}
+#description{
+    border-radius: 8px;
+    border:1px solid rgb(177, 177, 177);
+}
+#submit-btn{
+    padding: 10px;
+    border-radius: 6px;
+    color: #fff;
+    width: 150px;
+    background: linear-gradient(to bottom,  #f3c5bd 0%,#e86c57 50%,#ea2803 51%,#ff6600 75%,#c72200 100%);
+    margin-left: auto;
+
+}
+.description-text{
+    padding: 12px;
 }

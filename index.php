@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
     <link rel="stylesheet" href="<?php echo $root; ?>/resources/style.css">
+
 </head>
 <body>
     <nav>
@@ -16,21 +17,41 @@
         <img src="<?php echo $root; ?>/resources/icons/writing.png" class="icon"/>
         <h1>ToDo List.io</h1>
     </nav>
-    <section id="list">
-        <div class="card">
-            <div class="card-inner">
-                <div class="tool-bar">
-                    <h4>Title</h4>
-                    <div class="button-group">
-                        <a href="" class="action-btn" id="delete"><img class="btn-icon" src="<?php echo $root; ?>/resources/icons/delete.png" class="icon"/></a>
-                        <a href="" class="action-btn" id="edit"><img class="btn-icon" src="<?php echo $root; ?>/resources/icons/edit.png" class="icon"/></a>
+    <section id="container">
+        <?php
+            include('includes/db_connection.php');
+            $statement = "SELECT * FROM todolist";
+
+            if ($result = $dbConnection->query($statement)) {
+
+                while ($row = $result->fetch_assoc()) {
+                    $id = $row['id'];
+        ?>
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="tool-bar">
+                                <h4><?php echo $row['title']; ?></h4>
+                                <div class="button-group">
+                                    <form action="delete.php" method="post">
+                                        <button type="submit"  class="action-btn" id="delete" name="delete_btn" value="<?php echo $id; ?>" class="btn-link"><img class="btn-icon" src="<?php echo $root; ?>/resources/icons/delete.png" class="icon"/></button>
+                                    </form>
+                                    <form action="edit.php" method="post">
+                                        <button type="submit"  class="action-btn" id="edit" name="edit_btn" value="<?php echo $id; ?>" class="btn-link"><img class="btn-icon" src="<?php echo $root; ?>/resources/icons/edit.png" class="icon"/></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <p class="description-text"><?php echo $row['description']; ?></p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+            <?php 
+                }}else{
+                    echo'<h3>Nothing to display</h3>';
+                }
+            
+            ?>
     </section>
     <section id = "add-todo">
-        <a href="" class="cta-btn">Add Item in Todo List</a>
+        <a href="add.php" class="cta-btn">Add Item in Todo List</a>
     </section>
     
 </body>
