@@ -32,6 +32,7 @@
                     <h4>Edit Todo</h4>
                 </div>
                 <form action="edit-todo.php" method="post">
+                    <input type="hidden" name="fieldID" value="<?=$id?>"/>
                     <div class="form-group">
                         <p>Task Title</p>
                         <input type='text' class="form-input" name='title' id='title' value='<?php echo $res['title']; ?>' />
